@@ -1,7 +1,7 @@
 package com.sammidev
 
 import com.sammidev.generator.SimpleDisplayNameGenerator
-import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayNameGeneration
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -70,6 +70,7 @@ class App {
     }
 
     @Test
+    @Disabled("COMING SOON")
     fun testIsSquareError() {
         assertEquals(false, Application().isSquare(16))
     }
