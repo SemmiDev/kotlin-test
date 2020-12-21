@@ -158,23 +158,19 @@ class Other {
 class TestBerdasarkanKondisi(){
 
     @Test
-    @EnabledOnJre(value = [JRE.JAVA_13,JRE.JAVA_14,JRE.JAVA_15])
-    fun justEnabledOnList() {
-
+    fun printSystemProperties() {
+        System.getProperties().forEach {
+            t, u ->
+            println(t + " : " + u)
+        }
     }
 
-    @Test
-    @DisabledOnJre(value = [JRE.JAVA_8])
-    fun justDisableOnList() {
-
-    }
 
     @Test
-    @EnabledForJreRange(min = JRE.JAVA_8, max = JRE.JAVA_13)
-    fun runOnRange() {
+    @EnabledIfSystemProperties(value = [
+        EnabledIfSystemProperty(named = "java.vendor", matches = "Oracle Corporation")
+    ])
+    fun testSystemproperties() {
 
     }
 }
-
-
-
