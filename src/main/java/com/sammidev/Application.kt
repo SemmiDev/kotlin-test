@@ -25,6 +25,7 @@ class Calculator {
             else -> return a / b
         }
     }
+    fun modulo(a: Int,b: Int): Int = a % b
 }
 
 data class KRS(

@@ -1,6 +1,8 @@
 package com.sammidev
 
+import com.sammidev.generator.SimpleDisplayNameGenerator
 import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.DisplayNameGeneration
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import java.lang.IllegalArgumentException
@@ -73,14 +75,19 @@ class App {
     }
 }
 
-@DisplayName("test calculator test")
+@DisplayNameGeneration(SimpleDisplayNameGenerator::class)
 class CalculatorTest {
 
     private val calculator = Calculator()
 
     @Test
-    @DisplayName("test function Calculator.multiply(Int,Int)")
     fun testMultiply() {
         assertEquals(4, calculator.multiply(2,2))
     }
+
+    @Test
+    fun testModulo() {
+        assertEquals(0, calculator.modulo(10,2))
+    }
+
 }
