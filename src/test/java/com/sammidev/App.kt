@@ -1,6 +1,8 @@
 package com.sammidev
 
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertThrows
+import java.lang.IllegalArgumentException
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
@@ -33,5 +35,40 @@ class App {
         assertEquals("sammidev", sammi.nama)
     }
 
-    
+    @Test
+    fun testDivideSuccess() {
+        val divider = Calculator().divide(10,2)
+        assertEquals(5, divider)
+    }
+
+    @Test
+    fun testDivideSuccessBecauseThrow() {
+        val divide = Calculator().divide(2,0)
+        assertThrows<IllegalArgumentException> {
+            Calculator().divide(2,0)
+        }
+    }
+
+    @Test
+    fun testDivideError() {
+        assertThrows<IllegalArgumentException> {
+            Calculator().divide(10,2)
+        }
+    }
+
+    @Test
+    fun tesBiggestDivisorSuccess() {
+        assertEquals(5, Application().biggestDivisor(10))
+    }
+
+    @Test
+    fun testIsSquareSuccess() {
+        assertEquals(true, Application().isSquare(16))
+    }
+
+    @Test
+    fun testIsSquareError() {
+        assertEquals(false, Application().isSquare(16))
+    }
+
 }
