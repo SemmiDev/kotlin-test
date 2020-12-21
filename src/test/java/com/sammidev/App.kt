@@ -92,11 +92,21 @@ class CalculatorTest {
 
 class beforeafterEach() {
 
+    companion object {
 
-    @BeforeAll
-    fun connectToDB() {
-        println("CONNECTING...")
-        println("CONNECTED...")
+        @JvmStatic
+        @BeforeAll
+        fun connectToDB() {
+            println("CONNECTING...")
+            println("CONNECTED...")
+        }
+
+        @JvmStatic
+        @AfterAll
+        fun closeDB() {
+            println("DISCONNECTED...")
+        }
+
     }
 
     @BeforeEach
@@ -115,9 +125,5 @@ class beforeafterEach() {
         println("last")
     }
 
-    @AfterAll
-    fun closeDB() {
-        println("DISCONNECTED...")
-    }
 }
 
