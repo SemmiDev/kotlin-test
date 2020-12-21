@@ -16,6 +16,13 @@ class Application {
     fun isSquare(x: Int): Boolean =  sqrt(x.toDouble()) % 1.0 == 0.0
 }
 
+class Others {
+    fun factorial(n: Int): Int {
+        if (n == 0 || n == 1) return 1
+        return n * factorial(n-1)
+    }
+}
+
 class Calculator {
     fun add(a: Int, b: Int) = a + b
     fun multiply(a: Int, b: Int) = a * b

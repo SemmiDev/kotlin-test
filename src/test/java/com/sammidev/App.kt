@@ -1,10 +1,7 @@
 package com.sammidev
 
 import com.sammidev.generator.SimpleDisplayNameGenerator
-import org.junit.jupiter.api.Disabled
-import org.junit.jupiter.api.DisplayNameGeneration
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.api.*
 import java.lang.IllegalArgumentException
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
@@ -92,3 +89,23 @@ class CalculatorTest {
     }
 
 }
+
+class beforeafterEach() {
+
+    @BeforeEach
+    fun first(){
+        println("first")
+    }
+
+    @Test
+    fun faktorialSucces() {
+        val factorial = Others().factorial(5)
+        assertEquals(120, factorial)
+    }
+
+    @AfterEach
+    fun last(){
+        println("last")
+    }
+}
+
