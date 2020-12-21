@@ -92,6 +92,13 @@ class CalculatorTest {
 
 class beforeafterEach() {
 
+
+    @BeforeAll
+    fun connectToDB() {
+        println("CONNECTING...")
+        println("CONNECTED...")
+    }
+
     @BeforeEach
     fun first(){
         println("first")
@@ -106,6 +113,11 @@ class beforeafterEach() {
     @AfterEach
     fun last(){
         println("last")
+    }
+
+    @AfterAll
+    fun closeDB() {
+        println("DISCONNECTED...")
     }
 }
 
