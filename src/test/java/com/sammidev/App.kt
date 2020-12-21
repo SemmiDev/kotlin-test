@@ -1,14 +1,13 @@
 package com.sammidev
 
 import com.sammidev.generator.SimpleDisplayNameGenerator
+import jdk.jfr.Enabled
 import org.junit.jupiter.api.*
 import org.opentest4j.TestAbortedException
 import java.lang.IllegalArgumentException
 import kotlin.test.assertEquals
 import org.junit.jupiter.api.Assumptions.*
-import org.junit.jupiter.api.condition.DisabledOnOs
-import org.junit.jupiter.api.condition.EnabledOnOs
-import org.junit.jupiter.api.condition.OS
+import org.junit.jupiter.api.condition.*
 import java.lang.System.getenv
 import kotlin.test.assertNotNull
 
@@ -159,21 +158,22 @@ class Other {
 class TestBerdasarkanKondisi(){
 
     @Test
-    @EnabledOnOs(value = [OS.WINDOWS, OS.LINUX])
-    fun onlyRunOnWindows() {
+    @EnabledOnJre(value = [JRE.JAVA_13,JRE.JAVA_14,JRE.JAVA_15])
+    fun justEnabledOnList() {
 
     }
-
 
     @Test
-    @DisabledOnOs(value = [OS.WINDOWS])
-    fun notRunOnWindows() {
+    @DisabledOnJre(value = [JRE.JAVA_8])
+    fun justDisableOnList() {
 
     }
 
+    @Test
+    @EnabledForJreRange(min = JRE.JAVA_8, max = JRE.JAVA_13)
+    fun runOnRange() {
 
-
-
+    }
 }
 
 
