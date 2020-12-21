@@ -6,6 +6,9 @@ import org.opentest4j.TestAbortedException
 import java.lang.IllegalArgumentException
 import kotlin.test.assertEquals
 import org.junit.jupiter.api.Assumptions.*
+import org.junit.jupiter.api.condition.DisabledOnOs
+import org.junit.jupiter.api.condition.EnabledOnOs
+import org.junit.jupiter.api.condition.OS
 import java.lang.System.getenv
 import kotlin.test.assertNotNull
 
@@ -151,6 +154,26 @@ class Other {
         // harus false
         // assumeFalse(blablalbalbla)
     }
+}
+
+class TestBerdasarkanKondisi(){
+
+    @Test
+    @EnabledOnOs(value = [OS.WINDOWS, OS.LINUX])
+    fun onlyRunOnWindows() {
+
+    }
+
+
+    @Test
+    @DisabledOnOs(value = [OS.WINDOWS])
+    fun notRunOnWindows() {
+
+    }
+
+
+
+
 }
 
 
