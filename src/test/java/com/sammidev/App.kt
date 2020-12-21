@@ -1,5 +1,6 @@
 package com.sammidev
 
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import java.lang.IllegalArgumentException
@@ -70,5 +71,16 @@ class App {
     fun testIsSquareError() {
         assertEquals(false, Application().isSquare(16))
     }
+}
 
+@DisplayName("test calculator test")
+class CalculatorTest {
+
+    private val calculator = Calculator()
+
+    @Test
+    @DisplayName("test function Calculator.multiply(Int,Int)")
+    fun testMultiply() {
+        assertEquals(4, calculator.multiply(2,2))
+    }
 }
