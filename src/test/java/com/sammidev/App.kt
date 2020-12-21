@@ -2,6 +2,7 @@ package com.sammidev
 
 import com.sammidev.generator.SimpleDisplayNameGenerator
 import org.junit.jupiter.api.*
+import org.opentest4j.TestAbortedException
 import java.lang.IllegalArgumentException
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
@@ -127,3 +128,14 @@ class beforeafterEach() {
 
 }
 
+class Other {
+    @Test
+    fun testAborted() {
+        val profile = System.getenv()["NAME"]
+        if ("SAMMI" != profile) {
+            throw TestAbortedException()
+        }
+
+        println("DI EKSEKUSI KETIKA SAMMI == {PROFILE}")
+    }
+}
