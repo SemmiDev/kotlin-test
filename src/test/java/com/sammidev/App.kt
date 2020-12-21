@@ -5,6 +5,8 @@ import org.junit.jupiter.api.*
 import org.opentest4j.TestAbortedException
 import java.lang.IllegalArgumentException
 import kotlin.test.assertEquals
+import org.junit.jupiter.api.Assumptions.*
+import java.lang.System.getenv
 import kotlin.test.assertNotNull
 
 class App {
@@ -129,13 +131,27 @@ class beforeafterEach() {
 }
 
 class Other {
+
     @Test
     fun testAborted() {
-        val profile = System.getenv()["NAME"]
+        val profile = getenv()["NAME"]
         if ("SAMMI" != profile) {
             throw TestAbortedException()
         }
 
         println("DI EKSEKUSI KETIKA SAMMI == {PROFILE}")
     }
+
+    // ! -> return TestAbortedException
+    @Test
+    fun testAsumption() {
+        // harus true
+
+        assumeTrue("SAMMI" == getenv()["NAME"])
+        // harus false
+        // assumeFalse(blablalbalbla)
+    }
 }
+
+
+
