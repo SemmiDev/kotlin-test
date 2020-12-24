@@ -180,7 +180,7 @@ class Other {
 //}
 
 
-@TestMethodOrder(value = MethodOrderer.OrderAnnotation::class)
+@TestMethodOrder(value = MethodOrderer.Alphanumeric::class)
 class OrdererTest {
     companion object {
         val studentService = StudentService()
@@ -203,19 +203,19 @@ class OrdererTest {
 
     @Test
     @Order(3)
-    fun test3() {
+    fun testA() {
         println(studentService.findStudentById(3))
     }
 
     @Test
     @Order(1)
-    fun test1() {
+    fun testB() {
         println(studentService.findStudentById(1))
     }
 
     @Test
     @Order(2)
-    fun test2() {
+    fun testC() {
         println(studentService.findStudentById(2))
     }
 
