@@ -220,3 +220,30 @@ class OrdererTest {
     }
 
 }
+
+@TestInstance(value = TestInstance.Lifecycle.PER_CLASS)
+class Siklus {
+    // before atau after all bisa dijalankan tanpa dibungkus di companion object
+    val studentService = StudentService()
+
+    @BeforeAll
+    fun create() {
+        studentService.saveStudent(Student(1,"sammi","200"))
+    }
+
+    @AfterAll
+    fun delete() {
+        studentService.deleteStudent(Student(1,"sammi","200"))
+    }
+
+    @Test
+    fun testA() {
+        println(studentService.findAllStudent())
+    }
+
+    @Test
+    fun testB() {
+        println(studentService.findAllStudent())
+    }
+}
+
