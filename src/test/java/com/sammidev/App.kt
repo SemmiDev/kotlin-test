@@ -1,6 +1,8 @@
 package com.sammidev
 
+import com.sammidev.entity.Student
 import com.sammidev.generator.SimpleDisplayNameGenerator
+import com.sammidev.service.StudentService
 import jdk.jfr.Enabled
 import org.junit.jupiter.api.*
 import org.opentest4j.TestAbortedException
@@ -176,3 +178,45 @@ class Other {
 //
 //    }
 //}
+
+
+@TestMethodOrder(value = MethodOrderer.OrderAnnotation::class)
+class OrdererTest {
+    companion object {
+        val studentService = StudentService()
+
+        @JvmStatic
+        @BeforeAll
+        fun setup() {
+
+            val studentList = listOf<Student>(
+                    Student(1, "sammidev", "001"),
+                    Student(2, "sammidev", "002"),
+                    Student(3, "sammidev", "003"),
+                    Student(4, "sammidev", "004")
+            )
+            studentList.map {
+                studentService.saveStudent(it)
+            }
+        }
+    }
+
+    @Test
+    @Order(3)
+    fun test3() {
+        println(studentService.findStudentById(3))
+    }
+
+    @Test
+    @Order(1)
+    fun test1() {
+        println(studentService.findStudentById(1))
+    }
+
+    @Test
+    @Order(2)
+    fun test2() {
+        println(studentService.findStudentById(2))
+    }
+
+}
