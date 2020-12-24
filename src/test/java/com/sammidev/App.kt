@@ -11,6 +11,7 @@ import kotlin.test.assertEquals
 import org.junit.jupiter.api.Assumptions.*
 import org.junit.jupiter.api.condition.*
 import java.lang.System.getenv
+import java.util.*
 import kotlin.test.assertNotNull
 
 class App {
@@ -247,3 +248,36 @@ class Siklus {
     }
 }
 
+@DisplayName("A Queue")
+class QueueTest {
+    lateinit var queue: Queue<String>
+
+    @Nested
+    @DisplayName("when new")
+    inner class WhenNew {
+
+        @BeforeEach
+        fun first() {
+            queue = LinkedList()
+        }
+
+        @AfterEach
+        fun last() {
+            queue.remove()
+        }
+
+        @Test
+        fun testA() {
+            queue.add("sammi1")
+            queue.add("dev1")
+            queue.map { println(it) }
+        }
+
+        @Test
+        fun testB() {
+            queue.add("sammi2")
+            queue.add("dev2")
+            queue.map { println(it) }
+        }
+    }
+}
