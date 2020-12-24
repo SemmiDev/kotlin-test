@@ -154,23 +154,25 @@ class Other {
         // assumeFalse(blablalbalbla)
     }
 }
-
-class TestBerdasarkanKondisi(){
-
-    @Test
-    fun printSystemProperties() {
-        System.getProperties().forEach {
-            t, u ->
-            println(t + " : " + u)
-        }
-    }
-
-
-    @Test
-    @EnabledIfSystemProperties(value = [
-        EnabledIfSystemProperty(named = "java.vendor", matches = "Oracle Corporation")
-    ])
-    fun testSystemproperties() {
-
-    }
-}
+//
+//class TestBerdasarkanKondisi(){
+//
+//    @Test
+//    @Disabled
+//    fun printSystemProperties() {
+//        System.getProperties().forEach {
+//            t, u ->
+//            println(t + " : " + u)
+//        }
+//    }
+//
+//
+//    @Test
+//    @Disabled
+//    @EnabledIfSystemProperties(value = [
+//        EnabledIfSystemProperty(named = "java.vendor", matches = "Oracle Corporation")
+//    ])
+//    fun testSystemproperties() {
+//
+//    }
+//}
